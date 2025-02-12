@@ -98,9 +98,9 @@ cwd = getcwd()
 
 # grid files
 xml_files = [
-    abspath(join(cwd, r"../pyvolt/examples/quickstart/sample_data/CIGRE-MV-NoTap/Rootnet_FULL_NE_06J16h_EQ.xml")),
-    abspath(join(cwd, r"../pyvolt/examples/quickstart/sample_data/CIGRE-MV-NoTap/Rootnet_FULL_NE_06J16h_SV.xml")),
-    abspath(join(cwd, r"../pyvolt/examples/quickstart/sample_data/CIGRE-MV-NoTap/Rootnet_FULL_NE_06J16h_TP.xml"))]
+    abspath(join(cwd, r"../pyvolt/examples/sample_data/CIGRE-MV-NoTap/Rootnet_FULL_NE_06J16h_EQ.xml")),
+    abspath(join(cwd, r"../pyvolt/examples/sample_data/CIGRE-MV-NoTap/Rootnet_FULL_NE_06J16h_SV.xml")),
+    abspath(join(cwd, r"../pyvolt/examples/sample_data/CIGRE-MV-NoTap/Rootnet_FULL_NE_06J16h_TP.xml"))]
 
 # measurements files
 meas_configfile1 = abspath(join(cwd, r"./configs/Measurement_config2.json"))
@@ -126,13 +126,13 @@ topic_publish = "/se"
 broker_address = getenv('MQTT_BROKER', 'localhost')
 port = int(getenv('MQTT_PORT','1883'))
 
-mqttc = connect(client_name, broker_address, port)
+#mqttc = connect(client_name, broker_address, port)
 
 sequence = 0
 
 print("Press CTRL+C to stop client...")
 
-mqttc.publish("/debug", "SE started")
+#mqttc.publish("/debug", "SE started")
 
 try:
     while 1:
@@ -142,6 +142,6 @@ try:
 
 except KeyboardInterrupt:
     print('Exiting...')
-    mqttc.loop_stop()
-    mqttc.disconnect()
+    #mqttc.loop_stop()
+    #mqttc.disconnect()
     sys.exit(0)
