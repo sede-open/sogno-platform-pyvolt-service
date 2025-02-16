@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app-stateestimation-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app-stateestimation
+  template:
+    metadata:
+      labels:
+        app: flask-app-stateestimation
+    spec:
+      containers:
+      - name: flask-app-stateestimation-deployment
+        image: flask-app-stateestimation-deployment:latest
+        imagePullPolicy: Never   # Add this line
+        ports:
+        - containerPort: 5001

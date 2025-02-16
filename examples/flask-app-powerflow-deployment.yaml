@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app-powerflow-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app-powerflow
+  template:
+    metadata:
+      labels:
+        app: flask-app-powerflow
+    spec:
+      containers:
+      - name: flask-app-powerflow
+        image: flask-app-powerflow:latest
+        imagePullPolicy: Never   # Add this line
+        ports:
+        - containerPort: 5000
